@@ -1,0 +1,16 @@
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\Mercado.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\Mercado.pdb
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\MonoGame.Framework.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.XAudio2.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.Direct3D11.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.DXGI.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.XAudio2.xml
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.xml
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.Direct3D11.xml
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\SharpDX.DXGI.xml
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\obj\Debug\Mercado.csprojResolveAssemblyReference.cache
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\obj\Debug\Mercado.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\obj\Debug\Mercado.pdb
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\Microsoft.Xna.Framework.dll
+c:\Users\reparadocs\documents\visual studio 2013\Projects\Daelus\Mercado\bin\Debug\Microsoft.Xna.Framework.xml
