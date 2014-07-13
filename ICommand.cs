@@ -6,16 +6,13 @@ using Microsoft.Xna.Framework;
 
 namespace Mercado
 {
-    interface ICommand
+    public interface ICommand
     {
         void Execute(GameObject gameObject);
     }
 
-    interface IVectorCommand
+    public interface IVectorCommand
     {
-        void Execute(GameObject gameObject, Vector2 vector)
-        {
-
-        }
+        void Execute(GameObject gameObject, Vector2 vector);
     }
 }

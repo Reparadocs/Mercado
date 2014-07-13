@@ -14,18 +14,18 @@ namespace Mercado
 {
     public class PhysicsGameObject : GameObject
     {
-        protected PhysicsBody physicsBody;
+        public PhysicsBody body;
 
         public PhysicsGameObject(Game game, Texture2D texture, Vector2 position)
             : base(game, texture)
         {
-            physicsBody = new PhysicsBody(position, new Point(texture.Height, texture.Width));
+            body = new PhysicsBody(position, new Point(texture.Height, texture.Width));
         }
 
         public PhysicsGameObject(Game game, Texture2D texture, Vector2 position, float gravity) 
             : base(game, texture)
         {
-            physicsBody = new PhysicsBody(position, new Point(texture.Height, texture.Width), gravity);
+            body = new PhysicsBody(position, new Point(texture.Height, texture.Width), gravity);
         }
 
 
@@ -41,19 +41,14 @@ namespace Mercado
 
         public override void Update(GameTime gameTime)
         {
-            physicsBody.Update(gameTime);
-            drawPosition = Camera.WorldToCamera(physicsBody.position); 
+            body.Update(gameTime);
+            drawPosition = Camera.WorldToCamera(body.position); 
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-        }
-
-        public void ApplyForce(Vector2 force)
-        {
-            physicsBody.ApplyForce(force);
         }
     }
 }

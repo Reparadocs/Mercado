@@ -50,7 +50,7 @@ namespace Mercado
             this.velocity += force;
         }
 
-        bool OnGround()
+        public bool OnGround()
         {
             return onGround;
         }
@@ -58,23 +58,30 @@ namespace Mercado
         void CollisionResolution()
         {
             onGround = false;
-            Rectangle? collider = PhysicsService.CollisionDetection(boundingBox);
-            if (collider != null)
+            List<Rectangle> colliders = PhysicsService.CollisionDetection(boundingBox);
+            if (colliders != null)
             {
-                Vector2 depth = PhysicsService.GetIntersectionDepth(boundingBox, (Rectangle)collider);
-                if (Math.Abs(depth.X) > Math.Abs(depth.Y))
+                for (int i = 0; i < colliders.Count; i++)
                 {
-                    if(depth.Y < 0)
+                    if (boundingBox.Intersects(colliders[i]))
                     {
-                        onGround = true;
+                        Vector2 depth = PhysicsService.GetIntersectionDepth(boundingBox, (Rectangle)colliders[i]);
+                        if (Math.Abs(depth.X) > Math.Abs(depth.Y))
+                        {
+                            if (depth.Y < 0)
+                            {
+                                onGround = true;
+                            }
+                            position += new Vector2(0, depth.Y);
+                            velocity = new Vector2(velocity.X, 0);
+                        }
+                        else
+                        {
+                            position += new Vector2(depth.X, 0);
+                            velocity = new Vector2(0, velocity.Y);
+                        }
+                        boundingBox.Location = new Point((int)position.X, (int)position.Y);
                     }
-                    position += new Vector2(0, depth.Y);
-                    velocity = new Vector2(velocity.X, 0);
-                }
-                else
-                {
-                    position += new Vector2(depth.X, 0);
-                    velocity = new Vector2(0, velocity.Y);
                 }
             }
         }

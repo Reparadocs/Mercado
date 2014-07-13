@@ -18,7 +18,10 @@ namespace Mercado
             if(gameObject is PhysicsGameObject)
             {
                 PhysicsGameObject physicsObject = (PhysicsGameObject)gameObject;
-                physicsObject.ApplyForce(jumpingForce);
+                if(physicsObject.body.OnGround())
+                {
+                    physicsObject.body.ApplyForce(jumpingForce);
+                }
             }
         }
     }

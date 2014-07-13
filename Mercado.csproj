@@ -40,8 +40,9 @@
     <Compile Include="GameObject.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="InputManager.cs" />
-    <Compile Include="JumpCommand.cs" />
-    <Compile Include="MoveCommand.cs" />
+    <Compile Include="Commands\JumpCommand.cs" />
+    <Compile Include="Commands\MoveCommand.cs" />
+    <Compile Include="MercadoEngine.cs" />
     <Compile Include="PhysicsBody.cs" />
     <Compile Include="PhysicsGameObject.cs" />
     <Compile Include="PhysicsService.cs" />

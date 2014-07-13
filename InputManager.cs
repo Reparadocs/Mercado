@@ -9,17 +9,17 @@ namespace Mercado
 {
     public class InputManager
     {
-        public GameObject gameObject;
+        public static GameObject gameObject;
 
-        public Dictionary<Keys, ICommand> keyCommands;
-        public Dictionary<Buttons, ICommand> buttonCommands;
-        public IVectorCommand leftStick, rightStick;
+        public static Dictionary<Keys, ICommand> keyCommands;
+        public static Dictionary<Buttons, ICommand> buttonCommands;
+        public static IVectorCommand leftStick, rightStick;
+        public static ICommand leftTrigger, rightTrigger;
 
+        public static float triggerResistance;
 
-
-        public InputManager(GameObject gameObject)
+        public InputManager()
         {
-            this.gameObject = gameObject;
             keyCommands = new Dictionary<Keys, ICommand>();
             buttonCommands = new Dictionary<Buttons, ICommand>();
         }
@@ -28,30 +28,43 @@ namespace Mercado
             GamePadState controller = GamePad.GetState(PlayerIndex.One);
             KeyboardState keyboard = Keyboard.GetState();
 
-            foreach(Keys k in keyCommands.Keys)
+            if (gameObject != null)
             {
-                if(keyboard.IsKeyDown(k))
+                foreach (Keys k in keyCommands.Keys)
                 {
-                    keyCommands[k].Execute(gameObject);
+                    if (keyboard.IsKeyDown(k))
+                    {
+                        keyCommands[k].Execute(gameObject);
+                    }
                 }
-            }
 
-            foreach(Buttons b in buttonCommands.Keys)
-            {
-                if(controller.IsButtonDown(b))
+                foreach (Buttons b in buttonCommands.Keys)
                 {
-                    buttonCommands[b].Execute(gameObject);
+                    if (controller.IsButtonDown(b))
+                    {
+                        buttonCommands[b].Execute(gameObject);
+                    }
                 }
-            }
 
-            if(leftStick != null)
-            {
-                leftStick.Execute(gameObject, controller.ThumbSticks.Left);
-            }
+                if (leftStick != null)
+                {
+                    leftStick.Execute(gameObject, controller.ThumbSticks.Left);
+                }
 
-            if(rightStick != null)
-            {
-                rightStick.Execute(gameObject, controller.ThumbSticks.Right);
+                if (rightStick != null)
+                {
+                    rightStick.Execute(gameObject, controller.ThumbSticks.Right);
+                }
+
+                if (leftTrigger != null)
+                {
+                    leftTrigger.Execute(gameObject);
+                }
+
+                if (rightTrigger != null)
+                {
+                    rightTrigger.Execute(gameObject);
+                }
             }
         }
     }

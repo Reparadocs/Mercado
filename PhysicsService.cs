@@ -41,16 +41,38 @@ namespace Mercado
             return new Vector2(depthX, depthY);
         }
 
-        public Rectangle? CollisionDetection(Rectangle box)
+        public List<Rectangle> CollisionDetection(Rectangle box)
         {
+            List<Rectangle> collisions = new List<Rectangle>();
             foreach (Rectangle r in colliders)
             {
                 if (r.Intersects(box) && r != box)
                 {
-                    return r;
+                    collisions.Add(r);
                 }
             }
-            return null;
+            if(collisions.Count == 0)
+            {
+                return null;
+            }
+            for(int i = 0; i < collisions.Count; i++)
+            {
+                int closest = i;
+                float closestDistance = new Vector2(box.X - collisions[i].X, box.Y - collisions[i].Y).Length();
+                for(int j = i+1; j < collisions.Count; j++)
+                {
+                    float distance = new Vector2(box.X - collisions[i].X, box.Y - collisions[i].Y).Length();
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closest = i;
+                    }
+                }
+                Rectangle temp = collisions[i];
+                collisions[i] = collisions[closest];
+                collisions[closest] = temp;
+            }
+            return collisions;
         }
     }
 }
