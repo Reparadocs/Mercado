@@ -59,13 +59,13 @@ namespace Mercado
             {
                 int closest = i;
                 float closestDistance = new Vector2(box.X - collisions[i].X, box.Y - collisions[i].Y).Length();
-                for(int j = i+1; j < collisions.Count; j++)
+                for(int j = i; j < collisions.Count; j++)
                 {
-                    float distance = new Vector2(box.X - collisions[i].X, box.Y - collisions[i].Y).Length();
+                    float distance = new Vector2(box.X - collisions[j].X, box.Y - collisions[j].Y).Length();
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;
-                        closest = i;
+                        closest = j;
                     }
                 }
                 Rectangle temp = collisions[i];

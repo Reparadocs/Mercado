@@ -16,15 +16,19 @@ namespace Mercado
     {
         public PhysicsBody body;
 
-        public PhysicsGameObject(Game game, Texture2D texture, Vector2 position)
+        bool fixedPos;
+
+        public PhysicsGameObject(Game game, Texture2D texture, Vector2 position, bool fixedPos)
             : base(game, texture)
         {
+            this.fixedPos = fixedPos;
             body = new PhysicsBody(position, new Point(texture.Height, texture.Width));
         }
 
         public PhysicsGameObject(Game game, Texture2D texture, Vector2 position, float gravity) 
             : base(game, texture)
         {
+            fixedPos = false;
             body = new PhysicsBody(position, new Point(texture.Height, texture.Width), gravity);
         }
 
@@ -41,7 +45,10 @@ namespace Mercado
 
         public override void Update(GameTime gameTime)
         {
-            body.Update(gameTime);
+            if (!fixedPos)
+            {
+                body.Update(gameTime);
+            }
             drawPosition = Camera.WorldToCamera(body.position); 
             base.Update(gameTime);
         }
